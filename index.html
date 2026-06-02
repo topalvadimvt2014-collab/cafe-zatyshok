@@ -1,0 +1,856 @@
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе «Затишок» — Преміум Комфорт</title>
+    <style>
+        /* Сучасна колірна палітра та глобальні змінні */
+        :root {
+            --bg-cream: #FDFBF7;
+            --glass-base: rgba(245, 235, 225, 0.4);
+            --glass-border: rgba(112, 66, 20, 0.15);
+            --coffee-light: #D5BDAF;
+            --warm-accent: #8E5A32;
+            --deep-brown: #361F0A;
+            --text-main: #2A1B10;
+            --blur-effect: blur(12px);
+            --radius-lg: 20px;
+            --radius-sm: 12px;
+            --shadow-soft: 0 10px 30px rgba(54, 31, 10, 0.06);
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Елементи інтерфейсу та Навігація */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: var(--blur-effect);
+            -webkit-backdrop-filter: var(--blur-effect);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--deep-brown);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition-smooth);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--warm-accent);
+            background: var(--glass-base);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background-color: var(--deep-brown);
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+        }
+
+        /* Преміальний Hero Блок */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(54, 31, 10, 0.45), rgba(26, 14, 4, 0.75)), 
+                        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            max-width: 800px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            animation: fadeInDown 1.2s var(--transition-smooth);
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 650px;
+            margin-bottom: 35px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1.2s var(--transition-smooth) 0.2s;
+            animation-fill-mode: both;
+        }
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: #fff;
+            color: var(--deep-brown);
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: var(--transition-smooth);
+            animation: fadeInUp 1.2s var(--transition-smooth) 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .btn:hover {
+            background-color: var(--warm-accent);
+            color: #fff;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(142, 90, 50, 0.3);
+        }
+
+        /* Загальні стилі секцій */
+        section {
+            padding: 100px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--deep-brown);
+            margin-bottom: 50px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Про нас */
+        .about-card {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: var(--glass-base);
+            backdrop-filter: var(--blur-effect);
+            -webkit-backdrop-filter: var(--blur-effect);
+            border: 1px solid var(--glass-border);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #4A3B32;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 380px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .about-card:hover .about-img img {
+            transform: scale(1.06);
+        }
+
+        /* Меню */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .tab-btn {
+            padding: 12px 28px;
+            background: var(--glass-base);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--deep-brown);
+            transition: var(--transition-smooth);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--deep-brown);
+            color: #fff;
+            border-color: var(--deep-brown);
+            transform: translateY(-2px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 25px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(112, 66, 20, 0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(54, 31, 10, 0.1);
+            border-color: var(--coffee-light);
+        }
+
+        .menu-item-info h3 {
+            font-size: 20px;
+            color: var(--deep-brown);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .menu-item-info p {
+            font-size: 15px;
+            color: #665A51;
+            margin-bottom: 20px;
+        }
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .menu-item-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--warm-accent);
+            text-align: right;
+            padding-top: 15px;
+            border-top: 1px solid #F0EAE4;
+        }
+
+        /* Галерея */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 280px;
+            box-shadow: var(--shadow-soft);
+            background-color: #eaeaea;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(54, 31, 10, 0.85), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Відгуки */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .review-card {
+            background: var(--glass-base);
+            border: 1px solid var(--glass-border);
+            padding: 35px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .review-stars {
+            color: #FFB300;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--deep-brown);
+            text-align: right;
+        }
+
+        /* Форма відгуків */
+        .review-form-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            max-width: 650px;
+            margin: 0 auto;
+            border: 1px solid rgba(112, 66, 20, 0.08);
+        }
+
+        .review-form-container h3 {
+            font-size: 24px;
+            color: var(--deep-brown);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--deep-brown);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #E4DFD9;
+            border-radius: var(--radius-sm);
+            background-color: var(--bg-cream);
+            font-size: 16px;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--warm-accent);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(142, 90, 50, 0.1);
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+            font-size: 32px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .star-rating label {
+            color: #DDD5CD;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #FFB300;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--warm-accent);
+            color: #fff;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 20px rgba(142, 90, 50, 0.2);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--deep-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(54, 31, 10, 0.2);
+        }
+
+        /* Контакти та мапа */
+        .contacts-card {
+            display: flex;
+            gap: 50px;
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contacts-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .contact-item h4 {
+            color: var(--deep-brown);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .contact-item p {
+            font-size: 18px;
+            color: #554A42;
+            font-weight: 500;
+        }
+
+        .contact-item a {
+            color: #554A42;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-item a:hover {
+            color: var(--warm-accent);
+        }
+
+        .contacts-map {
+            flex: 1.5;
+            height: 380px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contacts-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background-color: var(--deep-brown);
+            color: var(--coffee-light);
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 80px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .about-card, .contacts-card {
+                flex-direction: column;
+                padding: 30px;
+            }
+            .about-img, .contacts-map {
+                width: 100%;
+                height: 300px;
+            }
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background-color: var(--bg-cream);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 25px;
+                transition: var(--transition-smooth);
+                z-index: 1000;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { font-size: 22px; padding: 10px 25px; }
+            section { padding: 70px 15px 20px; }
+            .section-title { font-size: 30px; margin-bottom: 35px; }
+        }
+    </style>
+</head>
+<body>
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <!-- Навігаційна панель -->
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo">Затишок</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Головна</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#reviews">Відгуки</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Головна сторінка -->
+    <section id="home" class="hero" style="padding: 0; max-width: 100%;">
+        <h1>Ласкаво просимо в кафе «Затишок»</h1>
+        <p>Місце, де кожна деталь створена для вашого максимального релаксу, смаку та теплих розмов.</p>
+        <a href="#contacts" class="btn">Замовити столик</a>
+    </section>
+
+    <!-- Про нас -->
+    <section id="about">
+        <h2 class="section-title">Магія Нашого Простору</h2>
+        <div class="about-card">
+            <div class="about-text">
+                <p>Завітайте до нашого кафе та насолодіться смачною домашньою кухнею, приємною атмосферою та привітним обслуговуванням.</p>
+                <p>У нас ви можете провести сімейний обід, зустріч з друзями або просто відпочити за чашкою кави.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=600" alt="Атмосфера кафе">
+            </div>
+        </div>
+    </section>
+
+    <!-- Меню -->
+    <section id="menu">
+        <h2 class="section-title">Гастрономічне Меню</h2>
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all', this)">Все меню</button>
+            <button class="tab-btn" onclick="filterMenu('coffee', this)">Кава</button>
+            <button class="tab-btn" onclick="filterMenu('tea', this)">Чай</button>
+            <button class="tab-btn" onclick="filterMenu('breakfast', this)">Сніданки</button>
+            <button class="tab-btn" onclick="filterMenu('main', this)">Основні страви</button>
+            <button class="tab-btn" onclick="filterMenu('deserts', this)">Десерти</button>
+        </div>
+
+        <div class="menu-grid" id="menu-container">
+            <div class="menu-item" data-category="coffee">
+                <div class="menu-item-info"><h3>Еспресо</h3><p>Класичний інтенсивний шот кави з щільною золотистою пінкою крема.</p></div>
+                <div class="menu-item-price">45 ₴</div>
+            </div>
+            <div class="menu-item" data-category="coffee">
+                <div class="menu-item-info"><h3>Капучино</h3><p>Ідеальний баланс фірмового еспресо та оксамитового збитого молока.</p></div>
+                <div class="menu-item-price">60 ₴</div>
+            </div>
+            <div class="menu-item" data-category="tea">
+                <div class="menu-item-info"><h3>Чай Альпійський Луг</h3><p>Ароматний трав'яний збір марокканської м'яти, ромашки та пелюсток.</p></div>
+                <div class="menu-item-price">50 ₴</div>
+            </div>
+            <div class="menu-item" data-category="breakfast">
+                <div class="menu-item-info"><h3>Англійський сніданок</h3><p>Два смажених яйця, хрусткий бекон, мисливські ковбаски, боби та тости.</p></div>
+                <div class="menu-item-price">145 ₴</div>
+            </div>
+            <div class="menu-item" data-category="main">
+                <div class="menu-item-info"><h3>Стейк із лосося</h3><p>Філе дикого лосося на грилі з ніжним соусом тар-тар та долькою лимону.</p></div>
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <div class="menu-item-price">290 ₴</div>
+            </div>
+            <div class="menu-item" data-category="deserts">
+                <div class="menu-item-info"><h3>Шоколадний Фондан</h3><p>Гаряча французька випічка з ганашем всередині та кулькою пломбіру.</p></div>
+                <div class="menu-item-price">95 ₴</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section id="gallery">
+        <h2 class="section-title">Естетика Страв та Інтер'єру</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <!-- Введіть назву файлу для РУЛЕТИКІВ нижче в src="" -->
+                <img src="ruletyky.png" alt="Фірмові м'ясні рулетики">
+                <div class="gallery-overlay">Фірмові м'ясні рулетики з соусом</div>
+            </div>
+            <div class="gallery-item">
+                <!-- Введіть назву файлу для ДВОРИКА нижче в src="" -->
+                <img src="dvoryk.png" alt="Наш зелений квітковий дворик">
+                <div class="gallery-overlay">Наш зелений квітковий дворик</div>
+            </div>
+            <div class="gallery-item">
+                <!-- Введіть назву файлу для САЛАТУ нижче в src="" -->
+                <img src="salat.png" alt="Легкий фірмовий салат">
+                <div class="gallery-overlay">Легкий фірмовий салат із зеленню</div>
+            </div>
+            <div class="gallery-item">
+                <!-- Введіть назву файлу для БЕНКЕТУ нижче в src="" -->
+                <img src="benket.png" alt="Організація святкових бенкетів">
+                <div class="gallery-overlay">Організація ваших святкових бенкетів</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Відгуки -->
+    <section id="reviews">
+        <h2 class="section-title">Що говорять гості</h2>
+        <div class="reviews-container" id="reviews-container"></div>
+
+        <div class="review-form-container">
+            <h3>Поділіться своїми враженнями</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label>Ваше ім'я</label>
+                    <input type="text" id="reviewerName" required placeholder="Введіть ім'я">
+                </div>
+                <div class="form-group">
+                    <label>Ваша оцінка</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Ваш коментар</label>
+                    <textarea id="reviewText" rows="4" required placeholder="Напишіть відгук..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Опублікувати відгук</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Контакти -->
+    <section id="contacts">
+        <h2 class="section-title">Чекаємо на вас</h2>
+        <div class="contacts-card">
+            <div class="contacts-info">
+                <div class="contact-item">
+                    <h4>📍 Локація</h4>
+                    <p>вулиця Залізнична 10, Старокостянтинів, Україна</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📞 Резерв столів</h4>
+                    <p><a href="tel:+380673364273">+380 67 336 42 73</a></p>
+[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: </div>
+                <div class="contact-item">
+                    <h4>🕒 Години роботи</h4>
+                    <p>Щодня: 10:00 – 18:00</p>
+                    <p style="font-size: 15px; color: #8E5A32; margin-top: 4px; font-weight: 700;">(Прийом замовлений: з 10:00 до 22:00)</p>
+                </div>
+            </div>
+            <div class="contacts-map">
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=27.2000%2C49.7400%2C27.2400%2C49.7600&amp;layer=mapnik&amp;marker=49.7545%2C27.2205"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Кафе «Затишок». Усі права захищені.</p>
+    </footer>
+
+    <script>
+        // Бургер меню (Мобільна навігація)
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinksList = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinksList.classList.toggle('active');
+            const lines = mobileMenu.querySelectorAll('span');
+            lines[0].style.transform = navLinksList.classList.contains('active') ? 'rotate(45deg) translate(6px, 6px)' : 'none';
+            lines[1].style.opacity = navLinksList.classList.contains('active') ? '0' : '1';
+            lines[2].style.transform = navLinksList.classList.contains('active') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
+        });
+
+        // Закриття меню при кліці на пункт
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksList.classList.remove('active');
+                const lines = mobileMenu.querySelectorAll('span');
+                lines[0].style.transform = 'none';
+                lines[1].style.opacity = '1';
+                lines[2].style.transform = 'none';
+            });
+        });
+
+        // Підсвічування активних посилань при прокрутці
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 160)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // Фільтрація меню страв
+        function filterMenu(category, buttonElement) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if(buttonElement) buttonElement.classList.add('active');
+
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Локальна система відгуків
+        const initialReviews = [
+            { name: "Марія К.", text: "Чудове місце! Капучино просто неймовірний, а фондан тане в роті.", stars: 5 },
+            { name: "Олександр Б.", text: "Завжди снідаю тут перед роботою. Атмосфера справді виправдовує назву!", stars: 5 }
+        ];
+
+        const reviewsContainer = document.getElementById('reviews-container');
+        
+        function loadReviews() {
+            if(!reviewsContainer) return;
+            reviewsContainer.innerHTML = '';
+ let reviews = JSON.parse(localStorage.getItem('cozy_reviews')) || initialReviews;
+            reviews.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = 
+                    <div class="review-stars">${'⭐'.repeat(r.stars)}</div>
+                    <p class="review-text">"${r.text}"</p>
+                    <div class="review-author">— ${r.name}</div>
+                ;
+                reviewsContainer.appendChild(card);
+            });
+        }
+
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewerName').value;
+            const text = document.getElementById('reviewText').value;
+            
+            // Пошук обраної зірочки
+            const ratingInput = document.querySelector('input[name="rating"]:checked');
+            
+            if(!ratingInput) {
+                alert('Будь ласка, виберіть оцінку (натисніть на зірочку)!');
+                return;
+            }
+
+            const starsValue = parseInt(ratingInput.value);
+
+            let reviews = JSON.parse(localStorage.getItem('cozy_reviews')) || initialReviews;
+            reviews.unshift({ name, text, stars: starsValue });
+            localStorage.setItem('cozy_reviews', JSON.stringify(reviews));
+            
+            loadReviews();
+            this.reset();
+        });
+
+        // Запуск відгуків при завантаженні сторінки
+        loadReviews();
+    </script>
+</body>
+</html>
