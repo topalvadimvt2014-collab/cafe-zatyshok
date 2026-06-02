@@ -1,4 +1,4 @@
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -134,7 +134,7 @@
             animation: fadeInUp 1.2s var(--transition-smooth) 0.2s;
             animation-fill-mode: both;
         }
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .btn {
+[02.06.2026 10:15] ᅠ ︎ ︎ ︎ ︎ ᅠ: .btn {
             display: inline-block;
             padding: 16px 40px;
             background-color: #fff;
@@ -277,7 +277,7 @@
             color: #665A51;
             margin-bottom: 20px;
         }
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .menu-item-price {
+ .menu-item-price {
             font-size: 20px;
             font-weight: 800;
             color: var(--warm-accent);
@@ -428,7 +428,7 @@
         .star-rating input {
             display: none;
         }
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: .star-rating label {
+ .star-rating label {
             color: #DDD5CD;
             cursor: pointer;
             transition: var(--transition-smooth);
@@ -573,7 +573,7 @@
     </style>
 </head>
 <body>
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <!-- Навігаційна панель -->
+[02.06.2026 10:15] ᅠ ︎ ︎ ︎ ︎ ᅠ: <!-- Навігаційна панель -->
     <header>
         <nav class="navbar">
             <a href="#home" class="logo">Затишок</a>
@@ -585,7 +585,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Головна</a></li>
                 <li><a href="#about">Про нас</a></li>
-                <li><a href="#menu">Menu</a></li>
+                <li><a href="#menu">Меню</a></li>
                 <li><a href="#gallery">Галерея</a></li>
                 <li><a href="#reviews">Відгуки</a></li>
                 <li><a href="#contacts">Контакти</a></li>
@@ -645,7 +645,7 @@
             </div>
             <div class="menu-item" data-category="main">
                 <div class="menu-item-info"><h3>Стейк із лосося</h3><p>Філе дикого лосося на грилі з ніжним соусом тар-тар та долькою лимону.</p></div>
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: <div class="menu-item-price">290 ₴</div>
+ <div class="menu-item-price">290 ₴</div>
             </div>
             <div class="menu-item" data-category="deserts">
                 <div class="menu-item-info"><h3>Шоколадний Фондан</h3><p>Гаряча французька випічка з ганашем всередині та кулькою пломбіру.</p></div>
@@ -659,22 +659,18 @@
         <h2 class="section-title">Естетика Страв та Інтер'єру</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <!-- Введіть назву файлу для РУЛЕТИКІВ нижче в src="" -->
                 <img src="ruletyky.png" alt="Фірмові м'ясні рулетики">
                 <div class="gallery-overlay">Фірмові м'ясні рулетики з соусом</div>
             </div>
             <div class="gallery-item">
-                <!-- Введіть назву файлу для ДВОРИКА нижче в src="" -->
                 <img src="dvoryk.png" alt="Наш зелений квітковий дворик">
                 <div class="gallery-overlay">Наш зелений квітковий дворик</div>
             </div>
             <div class="gallery-item">
-                <!-- Введіть назву файлу для САЛАТУ нижче в src="" -->
                 <img src="salat.png" alt="Легкий фірмовий салат">
                 <div class="gallery-overlay">Легкий фірмовий салат із зеленню</div>
             </div>
             <div class="gallery-item">
-                <!-- Введіть назву файлу для БЕНКЕТУ нижче в src="" -->
                 <img src="benket.png" alt="Організація святкових бенкетів">
                 <div class="gallery-overlay">Організація ваших святкових бенкетів</div>
             </div>
@@ -724,12 +720,12 @@
                 <div class="contact-item">
                     <h4>📞 Резерв столів</h4>
                     <p><a href="tel:+380673364273">+380 67 336 42 73</a></p>
-[02.06.2026 9:41] ᅠ ︎ ︎ ︎ ︎ ᅠ: </div>
+                </div>
                 <div class="contact-item">
                     <h4>🕒 Години роботи</h4>
                     <p>Щодня: 10:00 – 18:00</p>
-                    <p style="font-size: 15px; color: #8E5A32; margin-top: 4px; font-weight: 700;">(Прийом замовлений: з 10:00 до 22:00)</p>
-                </div>
+                    <p style="font-size: 15px; color: #8E5A32; margin-top: 4px; font-weight: 700;">(Прийом замовлень: з 10:00 до 22:00)</p>
+ </div>
             </div>
             <div class="contacts-map">
                 <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=27.2000%2C49.7400%2C27.2400%2C49.7600&amp;layer=mapnik&amp;marker=49.7545%2C27.2205"></iframe>
@@ -813,15 +809,15 @@
         function loadReviews() {
             if(!reviewsContainer) return;
             reviewsContainer.innerHTML = '';
- let reviews = JSON.parse(localStorage.getItem('cozy_reviews')) || initialReviews;
+            let reviews = JSON.parse(localStorage.getItem('cozy_reviews')) || initialReviews;
             reviews.forEach(r => {
                 const card = document.createElement('div');
                 card.className = 'review-card';
-                card.innerHTML = 
-                    <div class="review-stars">${'⭐'.repeat(r.stars)}</div>
+                card.innerHTML = `
+ <div class="review-stars">${'⭐'.repeat(r.stars)}</div>
                     <p class="review-text">"${r.text}"</p>
                     <div class="review-author">— ${r.name}</div>
-                ;
+                `;
                 reviewsContainer.appendChild(card);
             });
         }
